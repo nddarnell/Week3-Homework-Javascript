@@ -65,3 +65,31 @@ function generateStart(){
 
     document.getElementById("GeneratedPassword").innerHTML = pass;
 }
+
+function secondGenerateSpecial() {
+    var specialCharNumber = prompt("How many characters do you want? (Unlimited amount of characters allowed!)")
+    var specialCharacters = confirm("Do you want special characters? You can opt out of special characters.")
+    var specialNumber = confirm("Do you want numbers in your password? You can opt out of numbers.")
+    var specialUpper = confirm("Do you want uppercase letters? You can opt out of uppercase characters.")
+    var specialLower = confirm("Do you want lowercase letters? You can opt out of lowercase characters.")
+    var specialPass = ""
+    var numsArray = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+    var specialsArray = [33, 35, 36, 37, 38, 42, 43, 60, 61, 62, 63, 64]
+    var uppersArray = [65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78]
+    var lowersArray = [97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110]
+    var specialFinal = []
+
+
+
+    if (specialCharacters) {specialFinal = specialFinal.concat(specialsArray)}
+    if (specialNumber) {specialFinal = specialFinal.concat(numsArray)}
+    if (specialUpper) {specialFinal = specialFinal.concat(uppersArray)}
+    if (specialLower) {specialFinal = specialFinal.concat(lowersArray)}
+
+
+
+    for (i = 0; i < parseInt(specialCharNumber, 10); i++) {
+        specialPass += String.fromCharCode(specialFinal[Math.floor(Math.random() * specialFinal.length)])
+    }
+    document.getElementById("SpecialGenerate").innerHTML = specialPass;
+  }
